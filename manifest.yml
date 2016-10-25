@@ -1,6 +1,6 @@
 declared-services: 
-  internet-of-things-platform: 
-      label: discover-iot-try-service
+  discover-iot-try-service: 
+      label: internet-of-things-platform
       plan: iotf-service-free
 applications:
 - services:

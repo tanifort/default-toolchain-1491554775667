@@ -14,55 +14,30 @@ var appEnv = cfenv.getAppEnv();
 var Client = require("ibmiotf");
 var appClientConfig = {
     "org" : "2fbcv2",
-    "id" : ray27,
+    "id" : "ray27",
     "domain": "internetofthings.ibmcloud.com",
     "auth-key" : "a-2fbcv2-opgagk3i5t",
     "auth-token" : "OsfFOUQS+3Zk_a+vm7"
 }
-//var appClient = new Client.IotfApplication(appClientConfig);
-
-
-//{"org":"2fbcv2","apiKey":"a-2fbcv2-opgagk3i5t","apiToken":"OsfFOUQS+3Zk_a+vm7"}
-//---------------------------------connect---------------------------
-
-
-//var appClient = new Client.IotfApplication(appClientConfig);
-
-//appClient.connect();
-
-//appClient.on("connect", function () {
-
-
-//Add your code here
 
 var appClient = new Client.IotfApplication(appClientConfig);
-
+//Add your code here
 appClient.connect();
 
 appClient.on("connect", function () {
 
-    appClient.subscribeToDeviceEvents("myDeviceType","device01","+","json");
+    appClient.subscribeToDeviceEvents("iot-phone","ray27","+","json");
 
 });
 appClient.on("deviceEvent", function (deviceType, deviceId, eventType, format, payload) {
 
     console.log("Device Event from :: "+deviceType+" : "+deviceId+" of event "+eventType+" with payload : "+payload);
+     appClient.subscribeToDeviceStatus("iot-phone","ray27");
+
 
 });
 
 
-//-------------------------------------added code -----------------------------------------
-
-//});
-
-
-
-
-
-
-
-
-//--------------------------------------------------------------------------------
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
@@ -196,8 +171,6 @@ app.post('/registerDevice', function(req, res) {
 app.listen(appEnv.port, function() {
 	console.log("server starting on " + appEnv.url);
 });
-//-------------------------------------------------------------belongs actually out of this function...
-
 
 
 

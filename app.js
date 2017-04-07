@@ -31,6 +31,9 @@ appClient.on("connect", function () {
 });
 appClient.on("deviceEvent", function (deviceType, deviceId, eventType, format, payload) {
 
+
+	//console.log(payload);
+
     console.log("Device Event from :: "+deviceType+" : "+deviceId+" of event "+eventType+" with payload : "+payload);
      appClient.subscribeToDeviceStatus("iot-phone","ray27");
 

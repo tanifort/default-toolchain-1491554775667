@@ -5,7 +5,7 @@ declared-services:
 applications:
 - services:
   - discover-iot-try-service
-  name: iot-${random-word}
+  name: iot-ray
   disk: 128M
   command: node app.js
   path: .

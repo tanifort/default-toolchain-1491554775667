@@ -96,6 +96,7 @@
 		// We only attempt to publish if we're actually connected, saving CPU and battery
 		if (isConnected) {
 			var payload = {
+
 				"d": {
 					"id": window.deviceId,
 					"ts": (new Date()).getTime(),
@@ -106,6 +107,14 @@
 					"ob": parseFloat(ob.toFixed(2)),
 					"og": parseFloat(og.toFixed(2))
 				}
+
+			//--------------------------------------------------------my code to modify the payload..------------
+			//if 
+
+
+
+
+			//-------------------------------------------------
 			};
 			var message = new Paho.MQTT.Message(JSON.stringify(payload));
 			message.destinationName = topic;

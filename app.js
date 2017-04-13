@@ -29,20 +29,23 @@ appClient.on("connect", function () {
     appClient.subscribeToDeviceEvents("iot-phone","ray27","+","json");
 
 });
+
 appClient.on("deviceEvent", function (deviceType, deviceId, eventType, format, payload) {
-                    var  s= JSON.parse(payload);
+                    var  pay= JSON.parse(payload);
+  
+	var x = pay.d.ax;
+	var y = pay.d.ay;
+	var z = pay.d.az;
 
-	console.log("payload --> "+pay.d.ax);
+	if( (0.09 <=x || x<= -0.09 ) && (0.09 <=y || y<= -0.09)){
+        
+        console.log("Device Event from :: "+deviceType+" : "+deviceId+" of event "+eventType+" with payload : "+payload);
+      appClient.subscribeToDeviceStatus("iot-phone","ray27");
 
-	//if( (-0.09 <=pay.d.ax)&& (pay.d.ax<= 0.09 ) || (-0.09 <=  pay.d.ay) && (pay.d.ay<= 0.09) || (-0.09 <= pay.d.az)&&  (pay.d.az<= 0.09) ){
-      //  pay.d.ax=0;
-      //  pay.d.ay= 0;
-       // pay.d.az=0;
-       // console.log("Device Event from :: "+deviceType+" : "+deviceId+" of event "+eventType+" with payload : "+payload);
-      // appClient.subscribeToDeviceStatus("iot-phone","ray27");
-
-
-	//}
+     console.log(" your phone is motion");
+	}else{
+		console.log("your phone is on a plane surface");
+	}
 
 
 

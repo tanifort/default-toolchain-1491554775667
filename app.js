@@ -55,7 +55,7 @@ appClient.on("deviceEvent", function (deviceType, deviceId, eventType, format, p
 
 
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 var config = null;
 var credentials = null;
